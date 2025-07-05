@@ -14,6 +14,7 @@ import jieba
 import numpy as np
 import json
 import os
+from flask import Flask, render_template
 
 
 
@@ -23,6 +24,10 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route('/')
+def index():
+    return render_template('index.html')  # 让它加载你原来的 HTML 文件
 
 comments_cache = []
 @app.route('/get_latest_comments')
@@ -244,5 +249,7 @@ def process():
         }
     return jsonify(result)
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))  # 默认5000，本地运行用
+    app.run(host='0.0.0.0', port=port)
