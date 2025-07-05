@@ -29,7 +29,7 @@
 <script>
   // 定时请求最新评论接口，更新显示
   function fetchLatestComments() {
-    fetch('http://127.0.0.1:5000/get_latest_comments')
+    fetch('/get_latest_comments')
       .then(response => response.json())
       .then(data => {
         const comments = data.comments;
@@ -54,7 +54,7 @@
 <script>
   // 定时请求最新通知，更新显示
   function fetchLatestnotice() {
-    fetch('http://127.0.0.1:5000/get_latest_notice')
+    fetch('/get_latest_notice')
       .then(response => response.json())
       .then(data => {
         const notice = data.notice;
@@ -85,7 +85,7 @@
             document.getElementById('notice-list').innerHTML = '';
             document.getElementById('comments-list').innerHTML = '';
             
-            fetch('http://127.0.0.1:5000/process', {
+            fetch('/process', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
