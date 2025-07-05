@@ -9,7 +9,6 @@ Eel==0.17.0
 future==1.0.0
 gevent==21.8.0
 gevent-websocket==0.10.1
-greenlet==3.0.3
 idna==3.7
 joblib==1.4.2
 keyboard==0.13.5
