@@ -35,3 +35,4 @@ urllib3==2.2.2
 whichcraft==0.6.1
 zope.event==5.0
 zope.interface==7.0.1
+os
