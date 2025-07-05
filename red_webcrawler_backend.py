@@ -13,6 +13,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import jieba
 import numpy as np
 import json
+import os
 
 
 
@@ -210,7 +211,7 @@ def process():
         )
         print(tfidf_importance)
 
-        def generate_wordcloud_base64_from_df(df, text_col='comment', font_path='D:\python-for-excel\web crawler\simhei.ttf'):
+        def generate_wordcloud_base64_from_df(df, text_col='comment', font_path = os.path.join(os.path.dirname(__file__), 'simhei.ttf')):
      
             all_text = " ".join(df[text_col].astype(str).tolist())
     
