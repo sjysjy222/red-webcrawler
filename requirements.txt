@@ -34,3 +34,4 @@ zope.interface==7.0.1
 wordcloud
 jieba
 flask
+flask_cors
