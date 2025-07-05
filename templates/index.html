@@ -3,6 +3,90 @@
     <meta charset="UTF-8">
     <h1><center>小红书评论搜索</h1></center>
 </head>
+<title>小红书评论搜索</title>
+<style>
+        /* 基础样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px; /* 最大宽度 */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            button {
+                width: 100%;
+                padding: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 <body>
 <div id="input_area"><center>
     <p>输入cookie</p>
