@@ -1,5 +1,4 @@
 altgraph==0.17.4
-auto-py-to-exe==2.44.1
 bottle==0.12.25
 bottle-websocket==0.2.9
 certifi==2024.7.4
@@ -10,8 +9,6 @@ future==1.0.0
 gevent==21.8.0
 gevent-websocket==0.10.1
 idna==3.7
-joblib==1.4.2
-keyboard==0.13.5
 numpy==2.0.2
 packaging==24.1
 pandas==2.2.3
@@ -20,7 +17,6 @@ pycparser==2.22
 pyinstaller==6.10.0
 pyinstaller-hooks-contrib==2024.8
 pyparsing==3.1.2
-PyPDF2==3.0.1
 python-dateutil==2.9.0.post0
 pytz==2024.2
 pywin32-ctypes==0.2.3
@@ -35,4 +31,4 @@ urllib3==2.2.2
 whichcraft==0.6.1
 zope.event==5.0
 zope.interface==7.0.1
-os
+
