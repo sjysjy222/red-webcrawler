@@ -253,7 +253,7 @@ def process():
 @app.route('/anysearch', methods=['POST'])
 def anysearch():
     data = request.json
-    anykeyword=data.get('keyword_new')
+    anykeyword=data.get('anykeyword')
     keyword=anykeyword
     comment_df['matched_comment']=comment_df['comment'].apply(
                                                         lambda x: bool(re.search(keyword, str(x))
