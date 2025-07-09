@@ -111,6 +111,13 @@
 </div>
 
 <div id="result" style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;"><h5>分析结果</h5></div>
+<p></p>
+<div id="anysearch"style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;"><h5>自由搜索</h5>
+    <p>输入关键词</p>
+    <input id="anykeyword">
+    <p><button onclick="anysearchsubmit()">提交</button></p>
+    <div id="'anysearchresult"><p></p></div>
+    </div>
 
 <script>
   // 定时请求最新评论接口，更新显示
@@ -201,5 +208,42 @@
             });
         }
     </script>
+
+<script>
+    function anysearchsubmit(){
+        const anykeyword = document.getElementById('anykeyword').value;
+        document.getElementById('anysearchresult').innerHTML = '';
+
+        fetch('/anysearch',{
+            method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json'
+                },
+            body:
+                JSON.stringify({
+                    anykeyword: anykeyword
+        })
+    })
+        .then(response => response.json())
+        .then(data=>{
+                console.log('后端自由搜索返回数据:', data);
+                const comments = data.matched_comment_list;
+                const matched_case_number_any=data.matched_case_number_any;
+
+                let html = `<p>共搜索到 ${matched_case_number_any} 条结果：</p><ul>`;
+                comments.forEach(comment => {
+                html += `<li>${comment}</li>`;
+                });
+                html += '</ul>';
+
+                document.getElementById('anysearchresult').innerHTML = html;
+            })
+            .catch(error => {
+            console.error('请求出错:', error);
+            document.getElementById('anysearchresult').innerHTML = '<p>搜索失败，请重试。</p>';
+    });
+
+        }
+</script>
 </body>
 </html>
