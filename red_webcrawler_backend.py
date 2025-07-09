@@ -44,7 +44,7 @@ def get_latest_notice():
 def process():
     data = request.json
     print("收到前端发来的数据：", data)
-    global comments_cache, notice_cache, word_cloud_image # 声明用的是外面的全局变量
+    global comments_cache, notice_cache, word_cloud_image,comment_df # 声明用的是外面的全局变量
     comments_cache.clear()               # 清空列表
     notice_cache.clear()
     word_cloud_image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBg2ogq8gAAAAASUVORK5CYII="
@@ -248,6 +248,27 @@ def process():
         'word_cloud_image':word_cloud_image
         }
     return jsonify(result)
+
+
+@app.route('/anysearch', methods=['POST'])
+def anysearch():
+    data = request.json
+    anykeyword=data.get('keyword_new')
+    keyword=anykeyword
+    comment_df['matched_comment']=comment_df['comment'].apply(
+                                                        lambda x: bool(re.search(keyword, str(x))
+                                                        ))
+    print('搜索结果：')
+    print()
+    print(comment_df[comment_df['matched_comment'] == True])
+    matched_comment_list=comment_df[comment_df['matched_comment'] == True]['comment'].tolist()
+    matched_case_number_any=sum(comment_df['matched_comment'] == True)
+    print(f'共搜索到{matched_case_number_any}个结果。')
+    result_anysearch={
+        'match_case_number_any':matched_case_number_any,
+        'matched_comment_list':matched_comment_list #list
+    }
+    return jsonify(result_anysearch)
 
 
 if __name__ == '__main__':
