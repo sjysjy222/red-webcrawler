@@ -252,6 +252,7 @@ def process():
 
 @app.route('/anysearch', methods=['POST'])
 def anysearch():
+    global comment_df
     data = request.json
     anykeyword=data.get('anykeyword')
     keyword=anykeyword
